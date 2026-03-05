@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ShopFast | Catálogo, carrito y checkout</title>
+    <meta
+      name="description"
+      content="Catálogo de productos con navegación rápida, carrito y checkout. Contenido optimizado para buscadores y asistentes de IA."
+    />
+    <meta name="robots" content="index,follow,max-image-preview:large" />
+    <meta name="googlebot" content="index,follow,max-image-preview:large" />
+    <meta name="author" content="ShopFast" />
+    <meta name="application-name" content="ShopFast" />
+    <meta name="theme-color" content="#1d4ed8" />
+    <meta name="color-scheme" content="light" />
+    <meta name="format-detection" content="telephone=no" />
+
+    <meta property="og:title" content="ShopFast | Catálogo y Checkout" />
+    <meta
+      property="og:description"
+      content="Explora productos, agrega al carrito y finaliza tu compra con una experiencia rápida y accesible."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="ShopFast" />
+
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="ShopFast | Catálogo y Checkout" />
+    <meta
+      name="twitter:description"
+      content="Catálogo moderno con carrito y checkout optimizados para usuarios y motores de búsqueda."
+    />
+
+    <link rel="dns-prefetch" href="https://picsum.photos" />
+    <link rel="preconnect" href="https://picsum.photos" crossorigin />
+    <link rel="stylesheet" href="css/styles.css" />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebSite",
+            "name": "ShopFast",
+            "description": "Catálogo de productos con carrito y checkout optimizado para buscadores y asistentes de IA.",
+            "inLanguage": "es-AR"
+          },
+          {
+            "@type": "Organization",
+            "name": "ShopFast",
+            "description": "Comercio digital con experiencia de compra rápida y accesible."
+          }
+        ]
+      }
+    </script>
+  </head>
+  <body class="page">
+    <a class="skip-link" href="#main-content">Saltar al contenido principal</a>
+
+    <header class="page__header">
+      <nav class="nav" aria-label="Principal">
+        <a class="nav__brand" href="#/">ShopFast</a>
+
+        <div class="nav__links" role="list">
+          <a class="nav__link" data-route="home" data-i18n="navAll" href="#/">Todos</a>
+          <a class="nav__link" data-route="category" data-i18n="navTech" href="#/category/tecnologia">
+            Tecnología
+          </a>
+          <a class="nav__link" data-route="category" data-i18n="navClothing" href="#/category/ropa">
+            Ropa
+          </a>
+          <a class="nav__link" data-route="category" data-i18n="navHome" href="#/category/hogar">
+            Hogar
+          </a>
+          <a class="nav__link" data-route="admin" data-i18n="navAdmin" href="#/admin">Admin</a>
+        </div>
+
+        <div class="theme-control">
+          <label class="theme-control__label" data-i18n="themeLabel" for="theme-select">Tema</label>
+          <select
+            class="theme-control__select"
+            id="theme-select"
+            name="theme"
+            data-theme-select
+          >
+            <option value="system" data-i18n="themeSystem">Sistema</option>
+            <option value="light" data-i18n="themeLight">Claro</option>
+            <option value="dark" data-i18n="themeDark">Oscuro</option>
+          </select>
+        </div>
+
+        <div class="lang-control">
+          <label class="lang-control__label" data-i18n="languageLabel" for="lang-select">Idioma</label>
+          <select
+            class="lang-control__select"
+            id="lang-select"
+            name="language"
+            data-language-select
+          >
+            <option value="es" data-i18n="languageSpanish">Español</option>
+            <option value="en" data-i18n="languageEnglish">English</option>
+          </select>
+        </div>
+
+        <a class="cart-widget" href="#/cart" aria-label="Ir al carrito">
+          <span class="cart-widget__icon" aria-hidden="true">🛒</span>
+          <span class="cart-widget__count" data-cart-count>0</span>
+        </a>
+      </nav>
+    </header>
+
+    <main class="page__main" id="main-content">
+      <section
+        id="app"
+        class="app"
+        role="region"
+        aria-live="polite"
+        aria-atomic="true"
+      >
+        <section class="section">
+          <h1 class="section-title">Cargando catálogo…</h1>
+          <p class="section-subtitle">Preparando los productos disponibles.</p>
+        </section>
+      </section>
+    </main>
+
+    <footer class="page__footer">
+      <small class="page__footer-text">© 2025 ShopFast</small>
+    </footer>
+
+    <script src="js/app.js?v=5"></script>
+  </body>
+</html>
