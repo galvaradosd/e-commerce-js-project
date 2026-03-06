@@ -1,103 +1,107 @@
 # ShopFast — E-commerce SPA (Vanilla JS)
 
-ShopFast es una SPA de e-commerce construida con HTML, CSS y JavaScript puro (sin frameworks ni bundlers). Incluye catálogo, detalle de producto, carrito, checkout, panel de administración, temas y soporte bilingüe (ES/EN).
+ShopFast is an e-commerce SPA built with HTML, CSS and plain JavaScript (no frameworks, no bundlers). It includes a product catalog, product detail, cart, checkout, admin panel, themes and bilingual support (EN/ES).
 
-## Características
+## Features
 
-- Catálogo por categorías con navegación basada en hash.
-- Vista de detalle con selector de cantidad y validación de stock.
-- Carrito persistente en `localStorage` con totales y acciones rápidas.
-- Checkout con validación de formulario y generación de ID de orden.
-- Panel de administración con acciones de seed, reset, actualización de imágenes y borrado.
-- Tema claro, oscuro y automático (sistema), con persistencia.
-- Selector de idioma con traducciones completas de UI y productos (ES/EN).
+- Category catalog with hash-based navigation.
+- Product detail view with quantity selector and stock validation.
+- Persistent cart in `localStorage` with totals and quick actions.
+- Checkout with form validation and order ID generation.
+- Admin panel with seed, reset, image update and delete actions.
+- Light, dark and automatic (system) theme with persistence.
+- Language selector with full UI and product translations (EN/ES).
 
-## Estructura del proyecto
+## Project structure
 
 ```
 e-commerce-js-project/
 ├── css/
-│   └── styles.css        # Estilos base, componentes y utilidades
+│   └── styles.css        # Base styles, components and utilities
 ├── js/
-│   ├── app.js            # Lógica completa: router, render, CartStore, i18n, tema, admin
-│   └── data.js           # Catálogo local (local-first), funciones de acceso a productos
+│   ├── app.js            # Full logic: router, render, CartStore, i18n, theme, admin
+│   └── data.js           # Local catalog (local-first), product access functions
 ├── .gitignore
 ├── README.md
-├── index.html            # Shell de la app y navbar
-└── server.mjs            # Servidor dev estático (requiere Bun)
+├── index.html            # App shell and navbar
+└── server.mjs            # Static dev server (requires Bun)
 ```
 
-## Requisitos
+## Requirements
 
-- Navegador moderno con soporte de `localStorage`.
-- [Bun](https://bun.sh) (opcional, solo para el servidor dev local).
+- Modern browser with `localStorage` support.
+- [Bun](https://bun.sh) (optional, only for the local dev server).
 
-## Cómo correr
+## How to run
 
-### Opción 1 — Con servidor dev (recomendado)
+### Option 1 — With dev server (recommended)
 
-Evita problemas con rutas y caché al usar `file://`.
+Avoids path and cache issues when using `file://`.
 
 ```bash
 bun server.mjs
 ```
 
-Abrí [http://localhost:3000](http://localhost:3000) en el browser.
+Open [http://localhost:3000](http://localhost:3000) in the browser.
 
-### Opción 2 — Sin servidor
+### Option 2 — Without a server
 
-Abrí `index.html` directamente en el browser. En la mayoría de los browsers modernos funciona sin problemas.
+Open `index.html` directly in the browser. Works fine in most modern browsers.
 
-## Rutas disponibles
+## Available routes
 
-| Ruta | Descripción |
-|------|-------------|
-| `#/` | Catálogo completo |
-| `#/category/tecnologia` | Categoría Tecnología |
-| `#/category/ropa` | Categoría Ropa |
-| `#/category/hogar` | Categoría Hogar |
-| `#/item/:id` | Detalle de producto |
-| `#/cart` | Carrito |
+| Route | Description |
+|-------|-------------|
+| `#/` | Full catalog |
+| `#/category/tecnologia` | Technology category |
+| `#/category/ropa` | Clothing category |
+| `#/category/hogar` | Home category |
+| `#/item/:id` | Product detail |
+| `#/cart` | Cart |
 | `#/checkout` | Checkout |
-| `#/admin` | Panel de administración |
+| `#/admin` | Admin panel |
 
-## Panel de administración
+## Admin panel
 
-- Accedé desde `#/admin`.
-- Contraseña: `admin1234`
+- Access via `#/admin`.
+- Password: `admin1234`
 
-| Acción | Descripción |
+| Action | Description |
 |--------|-------------|
-| Reset completo | Borra todo, recarga el seed y actualiza imágenes |
-| Cargar productos | Carga el catálogo base (seed) |
-| Actualizar imágenes | Reaplica las imágenes definidas en `PRODUCT_IMAGE_OVERRIDES` |
-| Borrar todos los productos | Vacía el catálogo |
+| Full reset | Deletes everything, reloads seed and updates images |
+| Load products | Loads the base catalog (seed) |
+| Update images | Reapplies images defined in `PRODUCT_IMAGE_OVERRIDES` |
+| Delete all products | Clears the catalog |
 
-## Datos y persistencia
+## Data and persistence
 
-- El catálogo se genera desde `BASE_PRODUCTS` en `data.js` y se almacena en `localStorage` (local-first, sin red).
-- El carrito, el tema y el idioma también se persisten en `localStorage`.
-- Para resetear todo, usá la acción "Reset completo" en el panel admin o limpiá `localStorage` desde las DevTools del browser.
+- The catalog is generated from `BASE_PRODUCTS` in `data.js` and stored in `localStorage` (local-first, no network).
+- The cart, theme and language are also persisted in `localStorage`.
+- To reset everything, use the "Full reset" action in the admin panel or clear `localStorage` from the browser DevTools.
 
-### Base de datos local
+### Local database
 
-Actualmente el proyecto **no usa ninguna base de datos externa**. Todos los productos están definidos directamente en el código (`js/data.js`) y se sirven desde memoria y `localStorage`. Esto hace que la app funcione sin conexión a internet y sin ninguna configuración adicional.
+The project currently **does not use any external database**. All products are defined directly in the code (`js/data.js`) and served from memory and `localStorage`. This makes the app work offline with no additional setup.
 
-### Integración futura con Firestore
+### Future Firestore integration
 
-A futuro se podría reemplazar el catálogo local por **Cloud Firestore** (Firebase). El flujo sería:
+In the future, the local catalog could be replaced by **Cloud Firestore** (Firebase). The migration would involve:
 
-1. Reemplazar `fetchProducts()` y `fetchProductById()` en `data.js` por llamadas a Firestore.
-2. Usar el panel admin para hacer seed de los productos en la colección `products` de Firestore.
-3. Agregar reglas de seguridad en Firestore: lectura pública, escritura solo para administradores autenticados.
+1. Replacing `fetchProducts()` and `fetchProductById()` in `data.js` with Firestore calls.
+2. Using the admin panel to seed the products into a Firestore `products` collection.
+3. Adding Firestore security rules: public reads, writes only for authenticated admins.
 
-Esta migración no requeriría cambios en `app.js` ya que la interfaz de `fetchProducts` y `fetchProductById` se mantendría igual.
+This migration would require no changes to `app.js` since the `fetchProducts` and `fetchProductById` interface would stay the same.
 
-## Notas
+## Language
 
-- Los scripts se cargan con cache-busting (`?v=5`) en `index.html`.
-- No se usan dependencias externas en producción — todo es HTML, CSS y JS puro.
+The default language is **English**. A **Spanish** option is available via the language selector in the navbar.
+
+## Notes
+
+- Scripts are loaded with cache-busting (`?v=5`) in `index.html`.
+- No external dependencies in production — everything is plain HTML, CSS and JS.
 
 ---
 
-Proyecto educativo — [Germán Alvarado](https://github.com/galvaradosd)
+Educational project — [Germán Alvarado](https://github.com/galvaradosd)

@@ -1,12 +1,12 @@
 <!doctype html>
-<html lang="es">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>ShopFast | Catálogo, carrito y checkout</title>
+    <title>ShopFast | Catalog, cart and checkout</title>
     <meta
       name="description"
-      content="Catálogo de productos con navegación rápida, carrito y checkout. Contenido optimizado para buscadores y asistentes de IA."
+      content="Product catalog with fast navigation, cart and checkout. Content optimized for search engines and AI assistants."
     />
     <meta name="robots" content="index,follow,max-image-preview:large" />
     <meta name="googlebot" content="index,follow,max-image-preview:large" />
@@ -16,19 +16,19 @@
     <meta name="color-scheme" content="light" />
     <meta name="format-detection" content="telephone=no" />
 
-    <meta property="og:title" content="ShopFast | Catálogo y Checkout" />
+    <meta property="og:title" content="ShopFast | Catalog and Checkout" />
     <meta
       property="og:description"
-      content="Explora productos, agrega al carrito y finaliza tu compra con una experiencia rápida y accesible."
+      content="Explore products, add to cart and complete your purchase with a fast and accessible experience."
     />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="ShopFast" />
 
     <meta name="twitter:card" content="summary" />
-    <meta name="twitter:title" content="ShopFast | Catálogo y Checkout" />
+    <meta name="twitter:title" content="ShopFast | Catalog and Checkout" />
     <meta
       name="twitter:description"
-      content="Catálogo moderno con carrito y checkout optimizados para usuarios y motores de búsqueda."
+      content="Modern catalog with cart and checkout optimized for users and search engines."
     />
 
     <link rel="dns-prefetch" href="https://picsum.photos" />
@@ -42,67 +42,67 @@
           {
             "@type": "WebSite",
             "name": "ShopFast",
-            "description": "Catálogo de productos con carrito y checkout optimizado para buscadores y asistentes de IA.",
-            "inLanguage": "es-AR"
+            "description": "Product catalog with cart and checkout optimized for search engines and AI assistants.",
+              "inLanguage": "en"
           },
           {
             "@type": "Organization",
             "name": "ShopFast",
-            "description": "Comercio digital con experiencia de compra rápida y accesible."
+            "description": "Digital commerce with a fast and accessible shopping experience."
           }
         ]
       }
     </script>
   </head>
   <body class="page">
-    <a class="skip-link" href="#main-content">Saltar al contenido principal</a>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
 
     <header class="page__header">
-      <nav class="nav" aria-label="Principal">
+      <nav class="nav" aria-label="Main">
         <a class="nav__brand" href="#/">ShopFast</a>
 
         <div class="nav__links" role="list">
-          <a class="nav__link" data-route="home" data-i18n="navAll" href="#/">Todos</a>
+          <a class="nav__link" data-route="home" data-i18n="navAll" href="#/">All</a>
           <a class="nav__link" data-route="category" data-i18n="navTech" href="#/category/tecnologia">
-            Tecnología
+            Technology
           </a>
           <a class="nav__link" data-route="category" data-i18n="navClothing" href="#/category/ropa">
-            Ropa
+            Clothing
           </a>
           <a class="nav__link" data-route="category" data-i18n="navHome" href="#/category/hogar">
-            Hogar
+            Home
           </a>
           <a class="nav__link" data-route="admin" data-i18n="navAdmin" href="#/admin">Admin</a>
         </div>
 
         <div class="theme-control">
-          <label class="theme-control__label" data-i18n="themeLabel" for="theme-select">Tema</label>
+          <label class="theme-control__label" data-i18n="themeLabel" for="theme-select">Theme</label>
           <select
             class="theme-control__select"
             id="theme-select"
             name="theme"
             data-theme-select
           >
-            <option value="system" data-i18n="themeSystem">Sistema</option>
-            <option value="light" data-i18n="themeLight">Claro</option>
-            <option value="dark" data-i18n="themeDark">Oscuro</option>
+            <option value="system" data-i18n="themeSystem">System</option>
+            <option value="light" data-i18n="themeLight">Light</option>
+            <option value="dark" data-i18n="themeDark">Dark</option>
           </select>
         </div>
 
         <div class="lang-control">
-          <label class="lang-control__label" data-i18n="languageLabel" for="lang-select">Idioma</label>
+          <label class="lang-control__label" data-i18n="languageLabel" for="lang-select">Language</label>
           <select
             class="lang-control__select"
             id="lang-select"
             name="language"
             data-language-select
           >
-            <option value="es" data-i18n="languageSpanish">Español</option>
             <option value="en" data-i18n="languageEnglish">English</option>
+            <option value="es" data-i18n="languageSpanish">Español</option>
           </select>
         </div>
 
-        <a class="cart-widget" href="#/cart" aria-label="Ir al carrito">
+        <a class="cart-widget" href="#/cart" aria-label="Go to cart">
           <span class="cart-widget__icon" aria-hidden="true">🛒</span>
           <span class="cart-widget__count" data-cart-count>0</span>
         </a>
@@ -118,8 +118,8 @@
         aria-atomic="true"
       >
         <section class="section">
-          <h1 class="section-title">Cargando catálogo…</h1>
-          <p class="section-subtitle">Preparando los productos disponibles.</p>
+          <h1 class="section-title">Loading catalog…</h1>
+            <p class="section-subtitle">Preparing available products.</p>
         </section>
       </section>
     </main>

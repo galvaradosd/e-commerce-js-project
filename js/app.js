@@ -326,18 +326,18 @@ const I18N = {
 const formatMessage = (template, params = {}) =>
   template.replace(/\{(\w+)\}/g, (_, key) => String(params[key] ?? ''));
 
-let currentLang = 'es';
+let currentLang = 'en';
 
 const t = (key, params = {}) => {
-  const dict = I18N[currentLang] ?? I18N.es;
-  const fallback = I18N.es?.[key] ?? key;
+  const dict = I18N[currentLang] ?? I18N.en;
+  const fallback = I18N.en?.[key] ?? key;
   const value = dict[key] ?? fallback;
   return formatMessage(value, params);
 };
 
 const getLanguagePreference = () => {
   const stored = localStorage.getItem(LANG_KEY);
-  return stored === 'es' || stored === 'en' ? stored : 'es';
+  return stored === 'es' || stored === 'en' ? stored : 'en';
 };
 
 const syncI18nNodes = () => {
@@ -380,7 +380,7 @@ const initLanguage = () => {
 const getLocalizedField = (field) => {
   if (typeof field === 'string') return field;
   if (field && typeof field === 'object') {
-    return field[currentLang] ?? field.es ?? field.en ?? '';
+    return field[currentLang] ?? field.en ?? field.es ?? '';
   }
   return '';
 };

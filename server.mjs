@@ -1,9 +1,3 @@
-/**
- * server.mjs — Servidor dev para ShopFast.
- * Uso: bun server.mjs
- * Sirve archivos estáticos desde el directorio actual en http://localhost:3000
- */
-
 import { serve } from 'bun';
 import { readFileSync, existsSync } from 'fs';
 import { join, extname } from 'path';
@@ -33,7 +27,6 @@ serve({
     const url = new URL(req.url);
     let pathname = url.pathname;
 
-    // SPA fallback: cualquier ruta sin extensión sirve index.html
     const ext = extname(pathname);
     if (!ext) {
       pathname = '/index.html';
