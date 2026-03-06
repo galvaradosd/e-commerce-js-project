@@ -1055,6 +1055,8 @@ const renderCheckout = () => {
   const form = app.querySelector('[data-checkout-form]');
   const errorEl = app.querySelector('[data-error]');
 
+  if (!form || !errorEl) return;
+
   if (isCartEmpty) {
     errorEl.textContent = t('checkoutEmptyError');
     return;

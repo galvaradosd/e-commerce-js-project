@@ -1,58 +1,103 @@
-# ShopFast — E‑commerce SPA (Vanilla JS)
+# ShopFast — E-commerce SPA (Vanilla JS)
 
-ShopFast is an e‑commerce SPA built with HTML, CSS, and vanilla JavaScript. It includes catalog, product detail, cart, checkout, admin panel, themes, and bilingual support (ES/EN).
+ShopFast es una SPA de e-commerce construida con HTML, CSS y JavaScript puro (sin frameworks ni bundlers). Incluye catálogo, detalle de producto, carrito, checkout, panel de administración, temas y soporte bilingüe (ES/EN).
 
-## Key features
-- Category catalog with hash-based navigation.
-- Detail view with quantity selector and stock validation.
-- Persistent cart in `localStorage` with totals and quick actions.
-- Checkout with validation and order ID generation.
-- Admin panel with seed, reset, image update, and full delete actions.
-- Theme mode (system, light, dark) with persistence.
-- Language selector with full translations (UI and products).
+## Características
 
-## Project structure
-- `index.html`: app shell and navbar.
-- `css/styles.css`: base styles, components, and utilities.
-- `js/app.js`: full logic (router, render, store, admin, i18n, theme).
+- Catálogo por categorías con navegación basada en hash.
+- Vista de detalle con selector de cantidad y validación de stock.
+- Carrito persistente en `localStorage` con totales y acciones rápidas.
+- Checkout con validación de formulario y generación de ID de orden.
+- Panel de administración con acciones de seed, reset, actualización de imágenes y borrado.
+- Tema claro, oscuro y automático (sistema), con persistencia.
+- Selector de idioma con traducciones completas de UI y productos (ES/EN).
 
-## Requirements
-- Modern browser with `localStorage` support.
+## Estructura del proyecto
 
-## How to run
-1. Open `index.html` in your browser (ideally from a static server).
-2. Navigate using the links or hash routes.
+```
+e-commerce-js-project/
+├── css/
+│   └── styles.css        # Estilos base, componentes y utilidades
+├── js/
+│   ├── app.js            # Lógica completa: router, render, CartStore, i18n, tema, admin
+│   └── data.js           # Catálogo local (local-first), funciones de acceso a productos
+├── .gitignore
+├── README.md
+├── index.html            # Shell de la app y navbar
+└── server.mjs            # Servidor dev estático (requiere Bun)
+```
 
-## Main routes
-- `#/` main catalog
-- `#/category/tecnologia`, `#/category/ropa`, `#/category/hogar`
-- `#/item/:id`
-- `#/cart`
-- `#/checkout`
-- `#/admin`
+## Requisitos
 
-## Admin panel
-- Access via `#/admin`.
-- Password: `admin1234`
-- Available actions:
-  - Full reset (delete + seed + images)
-  - Load products (seed)
-  - Update images
-  - Delete all products
-  - Sign out
+- Navegador moderno con soporte de `localStorage`.
+- [Bun](https://bun.sh) (opcional, solo para el servidor dev local).
 
-## Persistence and local data
-- Products and cart are stored in `localStorage`.
-- Theme and language preferences are also stored in `localStorage`.
-- To reset everything, clear `localStorage` or use the admin reset.
+## Cómo correr
 
-## Product images
-- Images are defined by ID in `PRODUCT_IMAGE_OVERRIDES`.
-- The “Update images” admin button reapplies the current image set.
+### Opción 1 — Con servidor dev (recomendado)
 
-## Notes
-- To avoid cache issues, the script is loaded with cache-busting in `index.html`.
-- When using `file://`, some browsers may show warnings; a local static server is recommended.
+Evita problemas con rutas y caché al usar `file://`.
+
+```bash
+bun server.mjs
+```
+
+Abrí [http://localhost:3000](http://localhost:3000) en el browser.
+
+### Opción 2 — Sin servidor
+
+Abrí `index.html` directamente en el browser. En la mayoría de los browsers modernos funciona sin problemas.
+
+## Rutas disponibles
+
+| Ruta | Descripción |
+|------|-------------|
+| `#/` | Catálogo completo |
+| `#/category/tecnologia` | Categoría Tecnología |
+| `#/category/ropa` | Categoría Ropa |
+| `#/category/hogar` | Categoría Hogar |
+| `#/item/:id` | Detalle de producto |
+| `#/cart` | Carrito |
+| `#/checkout` | Checkout |
+| `#/admin` | Panel de administración |
+
+## Panel de administración
+
+- Accedé desde `#/admin`.
+- Contraseña: `admin1234`
+
+| Acción | Descripción |
+|--------|-------------|
+| Reset completo | Borra todo, recarga el seed y actualiza imágenes |
+| Cargar productos | Carga el catálogo base (seed) |
+| Actualizar imágenes | Reaplica las imágenes definidas en `PRODUCT_IMAGE_OVERRIDES` |
+| Borrar todos los productos | Vacía el catálogo |
+
+## Datos y persistencia
+
+- El catálogo se genera desde `BASE_PRODUCTS` en `data.js` y se almacena en `localStorage` (local-first, sin red).
+- El carrito, el tema y el idioma también se persisten en `localStorage`.
+- Para resetear todo, usá la acción "Reset completo" en el panel admin o limpiá `localStorage` desde las DevTools del browser.
+
+### Base de datos local
+
+Actualmente el proyecto **no usa ninguna base de datos externa**. Todos los productos están definidos directamente en el código (`js/data.js`) y se sirven desde memoria y `localStorage`. Esto hace que la app funcione sin conexión a internet y sin ninguna configuración adicional.
+
+### Integración futura con Firestore
+
+A futuro se podría reemplazar el catálogo local por **Cloud Firestore** (Firebase). El flujo sería:
+
+1. Reemplazar `fetchProducts()` y `fetchProductById()` en `data.js` por llamadas a Firestore.
+2. Usar el panel admin para hacer seed de los productos en la colección `products` de Firestore.
+3. Agregar reglas de seguridad en Firestore: lectura pública, escritura solo para administradores autenticados.
+
+Esta migración no requeriría cambios en `app.js` ya que la interfaz de `fetchProducts` y `fetchProductById` se mantendría igual.
+
+## Notas
+
+- Los scripts se cargan con cache-busting (`?v=5`) en `index.html`.
+- No se usan dependencias externas en producción — todo es HTML, CSS y JS puro.
 
 ---
-Demo project for educational purposes.
+
+Proyecto educativo — [Germán Alvarado](https://github.com/galvaradosd)
